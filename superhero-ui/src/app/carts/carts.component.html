@@ -1,0 +1,83 @@
+<ng-container *ngIf="products.length != 0">
+  <div class="container">
+    <div class="card-table">
+      <div class="cart-product">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th>Product no.</th>
+              <th>Product Name</th>
+              <th>Product Image</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Action</th>
+
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of products; let i = index">
+              <td>{{i+1}}</td>
+              <td>{{product.productname}}</td>
+              <td><img style="width: 40px;height:40px;" [src]="product?.image" alt=""></td>
+              <th>{{product.price}}</th>
+              <td>{{product.quantity}}</td>
+
+              <td><button (click)="removeItem(product)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
+            </tr>
+            <tr>
+              <td colspan="2"></td>
+              <td><button (click)="emptycart()" class="btn btn-danger">Empty cart</button></td>
+              <td><button routerLink="/products" class="btn btn-primary">Shop more</button></td>
+              <td><button routerLink="/payment" class="btn btn-success">Checkout</button></td>
+              <td><strong>Grand Total : R{{grandTotal}}</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+
+</ng-container>
+<ng-container *ngIf="products.length ==0">
+  <div class="container">
+    <div class="card">
+        <h5 class="card-title">My cart</h5>
+    </div>
+    <div class="center">
+      <img src="data:image/jpeg;base64,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" alt="">
+      <h4>Your cart is empty!</h4>
+      <h6>Add item to it now</h6>
+      <button routerLink="/products" class="btn btn-primary">Shop Now</button>
+    </div>
+  </div>
+</ng-container>
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-8">
+      <div class="row" *ngFor="let cartItem of cartItems">
+        <div class="col-1">
+          <button type="button" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="col-2">
+          <img [src]="cartItem?.image" alt="" style="width: 100%;" />
+        </div>
+        <div class="col-4">
+          <h2>{{ cartItem?.productname }}</h2>
+          <h4>{{ cartItem?.price }}</h4>
+        </div>
+        <div class="col">
+          <input type="number" [formControl]="quantity" />
+        </div>
+      </div>
+    </div>
+    <div class="col-4" style="background-color: red;">
+
+    </div>
+  </div>
+
+</div> -->

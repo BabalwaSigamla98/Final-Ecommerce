@@ -1,0 +1,41 @@
+<div *ngIf="error" class="alert alert-danger">{{error}}</div>
+<div *ngIf="success" class="alert alert-success">{{success}}</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="text-center">
+          <h1>Login to Top15</h1>
+          <h6> Please enter login details</h6>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="Username" class="form-label">Username</label>
+            <input formControlName="Username" type="text" class="form-control"
+              [ngClass]="{'is-invalid':submitted && g['Username'].errors}" id="Username" aria-describedby="emailHelp"
+              placeholder="Enter your Username" />
+            <div *ngIf="submitted && g['Username'].errors" class="invalid-feedback">
+              <div *ngIf="g['Username'].hasError('required')">Username is required </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="Password" class="form-label">Password</label>
+            <input formControlName="Password" type="password" class="form-control"
+              [ngClass]="{'is-invalid':submitted && g['Password'].errors}" id="Password" aria-describedby="emailHelp"
+              placeholder="Enter your Password" />
+            <div *ngIf="submitted && g['Password'].errors" class="invalid-feedback">
+              <div *ngIf="g['Password'].hasError('required')">Password is required </div>
+            </div>
+          </div>
+          <div class="form-group ">
+            <button [disabled]="loading" class="btn btn-primary md-3">
+              <span *ngIf="loading" class="spinner-border spiner-border-sm mr-1"></span>
+              Login
+            </button>
+            <a routerLink="/signup" class="btn btn-link">Register</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

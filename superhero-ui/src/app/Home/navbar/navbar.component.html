@@ -1,0 +1,41 @@
+<mat-sidenav-container class="container">
+    <mat-sidenav #sidebar mode="over" opened>
+       <app-sidebar></app-sidebar>
+
+    </mat-sidenav>
+    <mat-sidenav-content class="menuItem">
+        <div class="content">
+            <!-- <div class="toolnbr">
+               <mat-toolbar>
+                <mat-icon (click)="sidebar.toggle()">menu</mat-icon>
+                <div class="icon1">
+                    <button style="display:flex ;" class="btn btn-primary">
+                        <i style="font-size: 30px;" class="fas fa-cart-plus"></i>
+                        <div style="font-size: 20px;" class="dadge bg-danger">5</div>
+
+                    </button>
+                </div>
+            </mat-toolbar>
+            </div> -->
+            <div class="navbar navabr-dark nav shadow-sm">
+                <div class="navbar-brand align-item-center d-flex">
+                    <mat-icon (click)="sidebar.toggle()">menu</mat-icon>
+                    <div class="form-group">
+                        <input type="text" class="form-control" [(ngModel)] ="searchTerm" (keyup)="search($event)" placeholder="search">
+                        <span class="fas fa-search seach-icon"></span>
+
+                    </div>
+
+
+                </div>
+                <button routerLink="cart" class="btn btn-primary">
+                    <i class="fas fa-cart-plus"></i>
+                    <div  class="badge bg-danger">{{totalItem}}</div>
+                </button>
+            </div>
+            <div class="main">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
